@@ -1,0 +1,33 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ContextMenuPage {
+
+    private WebDriver driver;
+
+    private By contextMenu = By.id("Context Menu");
+    private By box = By.id("hot-spot");
+
+    public ContextMenuPage(WebDriver driver){
+        this.driver = driver;
+    }
+
+
+    public void rightClickOnBox(){
+        Actions action = new Actions(driver);
+        action.contextClick(driver.findElement(box)).perform();
+    }
+
+    public String popup_getText(){
+        return driver.switchTo().alert().getText();
+    }
+
+    public void acceptAlertPopup(){
+        driver.switchTo().alert().accept();
+    }
+
+
+}
